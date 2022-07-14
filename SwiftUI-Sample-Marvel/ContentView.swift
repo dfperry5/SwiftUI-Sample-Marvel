@@ -11,6 +11,8 @@ struct ContentView: View {
     var body: some View {
       Text("Hello, world!")
         .font(.title2)
+        .fontWeight(.bold)
+        .foregroundColor(.pink)
         .padding()
     }
 }
