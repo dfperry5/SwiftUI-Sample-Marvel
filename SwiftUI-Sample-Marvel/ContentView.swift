@@ -8,10 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+  let service = MarvelService()
+  
     var body: some View {
+      VStack {
         Text("Hello, world!")
             .padding()
+        
+        Button {
+          Task {
+            await callAPI()
+          }
+        } label: {
+          Text("Press Me")
+        }
+
+      }
     }
+}
+
+extension ContentView {
+  func callAPI() async {
+    guard let result = try? await service.getCharacters() else {
+      print ("ERROR")
+      return
+    }
+    print(result.data.results)
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
